@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPovPosts } from '../../lib/pov';
+
+const posts = await getPovPosts();
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<BaseLayout
+  title="POV"
+  description="Founder-led essays from Tactical Solutions. What we are seeing, what we are building, what we are wrong about."
+>
+  <h1>POV</h1>
+  <p class="meta">
+    Founder-led essays. What we are seeing, what we are building, what we are wrong about.
+  </p>
+
+  {
+    posts.length === 0 ? (
+      <p>No posts yet.</p>
+    ) : (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li>
+            <h2>
+              <a href={`/pov/${post.data.slug}`}>{post.data.title}</a>
+              {post.data.draft && <span class="tag">Draft</span>}
+            </h2>
+            <div class="post-meta">
+              {fmt(post.data.date)} &middot; {post.data.proofArm}
+              {' '} &middot; {post.data.author}
+            </div>
+            <p>{post.data.summary}</p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>

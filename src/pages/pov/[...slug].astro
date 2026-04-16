@@ -1,0 +1,47 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPovPosts } from '../../lib/pov';
+
+export async function getStaticPaths() {
+  const posts = await getPovPosts();
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const fmt = post.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.summary}
+  canonicalPath={`/pov/${post.data.slug}`}
+>
+  <article>
+    <h1>{post.data.title}</h1>
+    <div class="meta">
+      {fmt} &middot; {post.data.proofArm}
+      {' '} &middot; {post.data.author}
+      {post.data.draft && <span class="tag">Draft</span>}
+    </div>
+
+    <Content />
+
+    {
+      post.data.cta && (
+        <div class="cta">
+          <a href={post.data.cta.href}>{post.data.cta.label}</a>
+        </div>
+      )
+    }
+  </article>
+</BaseLayout>

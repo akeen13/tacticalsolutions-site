@@ -1,0 +1,150 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  canonicalPath?: string;
+}
+
+const { title, description, canonicalPath } = Astro.props;
+const siteName = 'Tactical Solutions';
+const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
+const canonical = canonicalPath
+  ? new URL(canonicalPath, Astro.site).toString()
+  : Astro.url.toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{fullTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Tactical Solutions POV"
+      href="/pov/rss.xml"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="brand">Tactical Solutions</a>
+        <a href="/pov">POV</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>&copy; {new Date().getFullYear()} Tactical Solutions.</p>
+    </footer>
+    <style is:global>
+      :root {
+        --fg: #111;
+        --fg-muted: #555;
+        --bg: #fff;
+        --accent: #1a1a1a;
+        --rule: #e5e5e5;
+        --max: 72ch;
+        font-size: 17px;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+      a { color: var(--accent); }
+      header {
+        border-bottom: 1px solid var(--rule);
+      }
+      header nav {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 1rem 1.25rem;
+        display: flex;
+        gap: 1.5rem;
+        align-items: baseline;
+      }
+      header nav .brand {
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      header nav a { text-decoration: none; }
+      header nav a:hover { text-decoration: underline; }
+      main {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 2rem 1.25rem 4rem;
+      }
+      footer {
+        border-top: 1px solid var(--rule);
+        color: var(--fg-muted);
+        font-size: 0.875rem;
+      }
+      footer p {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 1.25rem;
+      }
+      h1, h2, h3 { letter-spacing: -0.015em; line-height: 1.2; }
+      h1 { font-size: 2rem; margin: 0 0 0.5rem; }
+      h2 { font-size: 1.5rem; margin-top: 2rem; }
+      article p, article li { font-size: 1.0625rem; }
+      article pre {
+        background: #fafafa;
+        border: 1px solid var(--rule);
+        padding: 1rem;
+        overflow-x: auto;
+        font-size: 0.9rem;
+      }
+      article code { font-size: 0.95em; }
+      .meta {
+        color: var(--fg-muted);
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+      }
+      .post-list { list-style: none; padding: 0; margin: 0; }
+      .post-list li {
+        padding: 1.25rem 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      .post-list li:last-child { border-bottom: none; }
+      .post-list h2 { font-size: 1.25rem; margin: 0 0 0.25rem; }
+      .post-list h2 a { text-decoration: none; }
+      .post-list h2 a:hover { text-decoration: underline; }
+      .post-list .post-meta {
+        color: var(--fg-muted);
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--fg-muted);
+        border: 1px solid var(--rule);
+        padding: 0.1rem 0.5rem;
+        border-radius: 2px;
+        margin-left: 0.5rem;
+      }
+      .cta {
+        margin-top: 3rem;
+        padding: 1.25rem;
+        border-left: 3px solid var(--accent);
+        background: #fafafa;
+      }
+      .cta a {
+        font-weight: 600;
+      }
+    </style>
+  </body>
+</html>
