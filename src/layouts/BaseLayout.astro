@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../lib/urls';
+
 interface Props {
   title: string;
   description?: string;
@@ -9,7 +11,7 @@ const { title, description, canonicalPath } = Astro.props;
 const siteName = 'Tactical Solutions';
 const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
 const canonical = canonicalPath
-  ? new URL(canonicalPath, Astro.site).toString()
+  ? new URL(withBase(canonicalPath), Astro.site).toString()
   : Astro.url.toString();
 ---
 
@@ -22,19 +24,19 @@ const canonical = canonicalPath
     <title>{fullTitle}</title>
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <link
       rel="alternate"
       type="application/rss+xml"
       title="Tactical Solutions POV"
-      href="/pov/rss.xml"
+      href={withBase('/pov/rss.xml')}
     />
   </head>
   <body>
     <header>
       <nav>
-        <a href="/" class="brand">Tactical Solutions</a>
-        <a href="/pov">POV</a>
+        <a href={withBase('/')} class="brand">Tactical Solutions</a>
+        <a href={withBase('/pov')}>POV</a>
       </nav>
     </header>
     <main>

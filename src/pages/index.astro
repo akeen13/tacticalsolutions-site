@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
 ---
 
 <BaseLayout
@@ -8,10 +9,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
   <h1>Tactical Solutions</h1>
   <p class="meta">Autonomy for real-world operations.</p>
+  <p>This is a scaffold. The full site is under construction.</p>
   <p>
-    This is a scaffold. The full site lands on <a href="/TACA/issues/TACA-6">TACA-6</a>.
-  </p>
-  <p>
-    Founder-led POV essays: <a href="/pov">/pov</a>.
+    Founder-led POV essays: <a href={withBase('/pov')}>/pov</a>.
   </p>
 </BaseLayout>
