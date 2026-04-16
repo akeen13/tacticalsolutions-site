@@ -1,0 +1,48 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build + deploy
+    runs-on: ubuntu-latest
+    # Skip unless CF secrets are configured. This lets the repo live without
+    # deployment credentials and flip on automatically once secrets land.
+    if: vars.CLOUDFLARE_PAGES_PROJECT != ''
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build (prod on main, drafts-visible on branches)
+        run: npm run build
+        env:
+          SHOW_DRAFTS: ${{ github.ref == 'refs/heads/main' && 'false' || 'true' }}
+          ASTRO_SITE: ${{ vars.ASTRO_SITE || 'https://tacticalsolutions.com' }}
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: >-
+            pages deploy dist
+            --project-name=${{ vars.CLOUDFLARE_PAGES_PROJECT }}
+            --branch=${{ github.head_ref || github.ref_name }}
+            --commit-dirty=true
