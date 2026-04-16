@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build + frontmatter check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Astro sync (content schema types)
+        run: npx astro sync
+
+      - name: Type check
+        run: npm run check
+
+      - name: Production build
+        run: npm run build
+        env:
+          # Keep prod semantics on main builds; PR preview deploys set
+          # SHOW_DRAFTS on Cloudflare Pages side.
+          NODE_ENV: production
+
+      - name: Preview-style build (drafts visible)
+        run: npm run build
+        env:
+          SHOW_DRAFTS: "true"
