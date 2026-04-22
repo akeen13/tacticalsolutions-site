@@ -13,7 +13,7 @@ const pov = defineCollection({
     slug: z.string().regex(/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/, {
       message: 'slug must be kebab-case (lowercase, digits, hyphens)',
     }),
-    author: z.enum(['CEO', 'founder']).default('CEO'),
+    author: z.string().default('Anthony Keen'),
     proofArm: z.enum(['prosentinel', 'weft', 'applied', 'master']),
     summary: z.string().min(1).max(400),
     cta: z
