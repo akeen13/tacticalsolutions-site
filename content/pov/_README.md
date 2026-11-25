@@ -37,3 +37,14 @@ Schema is validated at build. Broken frontmatter fails the build with a readable
 5. CTO merges; Cloudflare Pages redeploys prod
 
 Files beginning with `_` (like this one) are ignored by the content loader.
+
+## Voice rules (non-negotiable)
+
+These come from the `anthony-voice` skill. A draft that breaks them is not ready.
+
+- **No em dashes. Ever.** Not in body copy, headings, titles, summaries or CTA labels. Biggest AI tell there is. Use a comma, a full stop, brackets or a colon depending on what the sentence actually needs. The site is swept clean; a new em dash is a regression.
+- **No banned vocabulary.** delve, leverage, harness, foster, embark, elevate, embrace, underscore, unlock, unleash, empower, streamline, optimize, revolutionize, transform, utilize, meticulous, comprehensive, intricate, pivotal, crucial, robust, seamless, vibrant, multifaceted, journey, testament, paradigm, synergy, cornerstone, catalyst, navigate.
+- **No banned patterns.** "It's not X, it's Y" negated contrast. Triple adjective stacking. Openers like "In today's..." or "It's worth noting". Engagement-bait closers ("What do you think?", "Thoughts?", "Tag someone").
+- **Lead with the lived detail, not the lesson.** Conclusion follows the story, it does not open the post.
+- **Short sentences. Active voice. British English.** No bare imperatives at the reader; use the request form.
+- **The truth gate is separate and just as hard.** Pre-customer means no claims of live deployments, real incidents or real customers. Any composite gets labelled as one in the opener, verbatim, and never trimmed.

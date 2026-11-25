@@ -1,6 +1,6 @@
 ---
 title: "The non-conformance that takes nine days to become a number"
-date: 2026-12-10
+date: 2026-12-03
 slug: "non-conformance-nine-days"
 author: "Anthony Keen"
 proofArm: "weft"
