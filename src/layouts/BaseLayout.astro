@@ -1,18 +1,51 @@
 ---
 import { withBase } from '../lib/urls';
 
+interface NavLink {
+  label: string;
+  href: string;
+  anchor?: boolean;
+}
+
 interface Props {
   title: string;
   description?: string;
   canonicalPath?: string;
+  /** Wordmark text. Defaults to the company name. */
+  brandLabel?: string;
+  /** Where the wordmark points. Defaults to the site root. */
+  brandHref?: string;
+  /** Header links. Defaults to the root nav (POV). */
+  navLinks?: NavLink[];
+  /** Optional header CTA rendered at the end of the nav. */
+  navCta?: NavLink;
+  /** Widen the content column for editorial/marketing pages. */
+  wide?: boolean;
+  /** Add `.prose` wrapper styling hooks. */
+  bodyClass?: string;
 }
 
-const { title, description, canonicalPath } = Astro.props;
+const {
+  title,
+  description,
+  canonicalPath,
+  brandLabel = 'Tactical Solutions',
+  brandHref = '/',
+  navLinks = [{ label: 'POV', href: '/pov' }],
+  navCta,
+  wide = false,
+  bodyClass,
+} = Astro.props;
 const siteName = 'Tactical Solutions';
 const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
 const canonical = canonicalPath
   ? new URL(withBase(canonicalPath), Astro.site).toString()
   : Astro.url.toString();
+
+// Internal links get the base prefix; absolute URLs, mailto and bare
+// in-page anchors pass through unchanged.
+const href = (link: NavLink) =>
+  /^(?:[a-z]+:|\/\/|#)/i.test(link.href) ? link.href : withBase(link.href);
 ---
 
 <!doctype html>
@@ -24,6 +57,14 @@ const canonical = canonicalPath
     <title>{fullTitle}</title>
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    {description && <meta name="twitter:description" content={description} />}
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <link
       rel="alternate"
@@ -32,18 +73,31 @@ const canonical = canonicalPath
       href={withBase('/pov/rss.xml')}
     />
   </head>
-  <body>
+  <body class={bodyClass}>
     <header>
-      <nav>
-        <a href={withBase('/')} class="brand">Tactical Solutions</a>
-        <a href={withBase('/pov')}>POV</a>
+      <nav class={wide ? 'wide' : undefined}>
+        <a href={href({ label: brandLabel, href: brandHref })} class="brand">{brandLabel}</a>
+        {
+          navLinks.map((link) => (
+            <a href={href(link)}>{link.label}</a>
+          ))
+        }
+        {
+          navCta && (
+            <a href={href(navCta)} class="nav-cta">
+              {navCta.label}
+            </a>
+          )
+        }
       </nav>
     </header>
-    <main>
+    <main class={wide ? 'wide' : undefined}>
       <slot />
     </main>
     <footer>
-      <p>&copy; {new Date().getFullYear()} Tactical Solutions.</p>
+      <slot name="footer">
+        <p>&copy; {new Date().getFullYear()} Tactical Solutions.</p>
+      </slot>
     </footer>
     <style is:global>
       :root {
@@ -78,14 +132,93 @@ const canonical = canonicalPath
       header nav .brand {
         font-weight: 600;
         letter-spacing: -0.01em;
+        margin-right: auto;
       }
       header nav a { text-decoration: none; }
       header nav a:hover { text-decoration: underline; }
+      header nav .nav-cta {
+        border: 1px solid var(--accent);
+        border-radius: 3px;
+        padding: 0.35rem 0.85rem;
+        white-space: nowrap;
+      }
+      header nav .nav-cta:hover {
+        background: var(--accent);
+        color: var(--bg);
+        text-decoration: none;
+      }
       main {
         max-width: var(--max);
         margin: 0 auto;
         padding: 2rem 1.25rem 4rem;
       }
+      /* Wide variant for marketing/editorial pages. */
+      .wide {
+        max-width: 60rem;
+      }
+      main.wide > section + section {
+        margin-top: 4rem;
+      }
+      /* Shared section primitives. */
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.75rem;
+        color: var(--fg-muted);
+        margin: 0 0 0.75rem;
+      }
+      .lede {
+        font-size: 1.1875rem;
+        color: var(--fg-muted);
+        max-width: 60ch;
+      }
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.25rem;
+        align-items: center;
+        margin-top: 1.5rem;
+      }
+      .btn {
+        display: inline-block;
+        border: 1px solid var(--accent);
+        border-radius: 3px;
+        padding: 0.6rem 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .btn:hover {
+        background: var(--accent);
+        color: var(--bg);
+      }
+      .btn.secondary {
+        border-color: var(--rule);
+        font-weight: 500;
+      }
+      .btn.secondary:hover {
+        background: #f2f2f2;
+        color: var(--fg);
+      }
+      .card-grid {
+        display: grid;
+        gap: 1.75rem;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        margin-top: 1.5rem;
+      }
+      .card {
+        border-top: 2px solid var(--accent);
+        padding-top: 0.85rem;
+      }
+      .card h3 {
+        font-size: 1.0625rem;
+        margin: 0 0 0.4rem;
+      }
+      .card p { margin: 0; color: var(--fg-muted); }
+      .rule-list {
+        padding-left: 1.1rem;
+        max-width: 60ch;
+      }
+      .rule-list li { margin-bottom: 0.5rem; }
       footer {
         border-top: 1px solid var(--rule);
         color: var(--fg-muted);
