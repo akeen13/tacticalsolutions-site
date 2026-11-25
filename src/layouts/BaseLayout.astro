@@ -51,6 +51,22 @@ const canonical = canonicalPath
 // in-page anchors pass through unchanged.
 const href = (link: NavLink) =>
   /^(?:[a-z]+:|\/\/|#)/i.test(link.href) ? link.href : withBase(link.href);
+
+// Page analytics (Plausible, cookieless). One tag in <head>, so every page
+// counts with no per-page work and no cookie banner.
+//
+// The data-domain is pinned to the canonical domain rather than read from the
+// deploy host, so the interim GitHub Pages host and the eventual custom domain
+// report into one continuous series instead of splitting into two site entries.
+// Override with PUBLIC_PLAUSIBLE_DOMAIN if that ever needs to move.
+//
+// Skipped in dev so `astro dev` refreshes do not inflate the live numbers.
+// PUBLIC_PLAUSIBLE_SRC points at a self-hosted Plausible.
+const plausibleDomain =
+  import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN ?? 'tacticalsolutions.com';
+const plausibleScript =
+  import.meta.env.PUBLIC_PLAUSIBLE_SRC ?? 'https://plausible.io/js/script.js';
+const showAnalytics = import.meta.env.PROD;
 ---
 
 <!doctype html>
@@ -77,6 +93,16 @@ const href = (link: NavLink) =>
       title="Tactical Solutions POV"
       href={withBase('/pov/rss.xml')}
     />
+    {
+      showAnalytics && (
+        <script
+          is:inline
+          defer
+          data-domain={plausibleDomain}
+          src={plausibleScript}
+        />
+      )
+    }
   </head>
   <body class={bodyClass}>
     <header>
