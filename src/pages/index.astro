@@ -1,22 +1,70 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { withBase } from '../lib/urls';
+
+const arms = [
+  {
+    name: 'Weft PocketQS',
+    href: '/weft',
+    pitch: 'Your quality system, run from a pocket. Capture a non-conformance in under 60 seconds, let the system draft the CAPA, keep the audit trail current.',
+  },
+  {
+    name: 'ProSentinel',
+    href: '/prosentinel',
+    pitch: 'The SOC that handles the other 22 hours. Every alert triaged, the playbook run, a human in the loop only for the calls that need one.',
+  },
+  {
+    name: 'Consulting',
+    href: '/pov',
+    pitch: 'Founder-led work with the operators who have to live with the result. The essays are where the argument is written down.',
+  },
+];
 ---
 
 <BaseLayout
   title="Tactical Solutions"
-  description="Autonomy for real-world operations."
+  description="Autonomy for real-world operations. Weft PocketQS for quality capture on the floor, ProSentinel for the SOC, and founder-led consulting."
+  canonicalPath="/"
+  wide
 >
-  <h1>Tactical Solutions</h1>
-  <p class="meta">Autonomy for real-world operations.</p>
-  <p>This is a scaffold. The full site is under construction.</p>
-  <p>
-    ProSentinel, our autonomous SOC: <a href={withBase('/prosentinel')}>/prosentinel</a>.
-  </p>
-  <p>
-    Weft PocketQS, our autonomous quality system: <a href={withBase('/weft')}>/weft</a>.
-  </p>
-  <p>
-    Founder-led POV essays: <a href={withBase('/pov')}>/pov</a>.
-  </p>
+  <section id="hero">
+    <p class="eyebrow">Autonomy for real-world operations</p>
+    <h1>Tactical Solutions</h1>
+    <p class="lede">
+      We build autonomy for work that happens in plants, in SOCs, and on the
+      floor, not in a dashboard. One platform, three go-to-markets.
+    </p>
+  </section>
+
+  <section id="arms">
+    <div class="card-grid">
+      {
+        arms.map((arm) => (
+          <div class="card">
+            <h2 class="arm-name">
+              <a href={withBase(arm.href)}>{arm.name}</a>
+            </h2>
+            <p>{arm.pitch}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="pov">
+    <h2>Where the argument is written down</h2>
+    <p>
+      Founder-led essays on capture, the last mile of autonomy, and what breaks
+      first in a week.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href={withBase('/pov')}>Read the POV</a>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .arm-name { font-size: 1.125rem; margin: 0 0 0.4rem; }
+  .arm-name a { text-decoration: none; }
+  .arm-name a:hover { text-decoration: underline; }
+</style>

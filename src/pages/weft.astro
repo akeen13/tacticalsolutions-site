@@ -26,7 +26,7 @@ const proofTiles = [
   brandLabel="Weft PocketQS"
   brandHref="/weft"
   navLinks={navLinks}
-  navCta={{ label: 'Book a walkthrough', href: '#walkthrough' }}
+  navCta={{ label: 'Book a 20-min walkthrough', href: '#walkthrough' }}
   wide
 >
   <section id="hero">
@@ -175,26 +175,31 @@ const proofTiles = [
   </section>
 
   <section id="proof">
-    <h2>What we measure.</h2>
+    <h2>Design-partner cohort. First three slots open.</h2>
     <p class="lede">
-      These are the numbers the first cohort sets the baseline for. Nothing is
-      claimed yet, which is why there are no logos and no figures.
+      We are opening a small first cohort before general availability. No logos
+      here yet, we will swap in named references the day they close.
     </p>
+    <p class="proof-status">Currently onboarding design partners.</p>
     <div class="card-grid">
       <div class="card">
         <h3>Hours saved per site, per week.</h3>
+        <p class="metric-value">Tracked since day one</p>
         <p>The number that decides whether this was worth the change.</p>
       </div>
       <div class="card">
         <h3>Time to first CAPA draft.</h3>
+        <p class="metric-value">Tracked since day one</p>
         <p>Capture to an approved draft, measured on real captures.</p>
       </div>
       <div class="card">
         <h3>Audit findings closed per cycle.</h3>
+        <p class="metric-value">Tracked since day one</p>
         <p>Against your frameworks, not ours.</p>
       </div>
       <div class="card">
         <h3>Sites per quality lead.</h3>
+        <p class="metric-value">Tracked since day one</p>
         <p>How many plants one lead can actually run.</p>
       </div>
     </div>
@@ -295,8 +300,8 @@ const proofTiles = [
     <form id="intake" class="intake" novalidate>
       <p class="intake-intro">Six fields, one email.</p>
       <div class="field">
-        <label for="f-name">Name</label>
-        <input id="f-name" name="name" type="text" autocomplete="name" required />
+        <label for="f-company">Company</label>
+        <input id="f-company" name="company" type="text" autocomplete="organization" required />
       </div>
       <div class="field">
         <label for="f-role">Role</label>
@@ -362,7 +367,7 @@ const proofTiles = [
         Weft PocketQS is built by <a href={withBase('/')}>Tactical Solutions</a>,
         the same platform behind
         <a href={withBase('/prosentinel')}>ProSentinel</a>. One autonomy layer,
-        two go-to-markets.
+        three go-to-markets.
       </p>
     </div>
   </Fragment>
@@ -380,7 +385,7 @@ const proofTiles = [
     const data = new FormData(form);
     const value = (key: string) => String(data.get(key) ?? '').trim();
     const lines = [
-      `Name: ${value('name')}`,
+      `Company: ${value('company')}`,
       `Role: ${value('role')}`,
       `Sites covered: ${value('sites')}`,
       `Current QMS: ${value('qms')}`,
@@ -388,13 +393,27 @@ const proofTiles = [
       '',
       `Biggest weekly time sink: ${value('pain')}`,
     ];
-    const subject = `Weft PocketQS walkthrough: ${value('name') || 'first cohort'}`;
+    const subject = `Weft PocketQS walkthrough: ${value('company') || 'first cohort'}`;
     window.location.href =
       `mailto:${CONTACT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
   });
 </script>
 
 <style>
+  .proof-status {
+    display: inline-block;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0.9rem 0 0;
+  }
+  .metric-value {
+    font-weight: 600;
+    color: var(--fg);
+    margin: 0 0 0.3rem;
+  }
   .hero-proof {
     margin-top: 2rem;
     padding-top: 1rem;
