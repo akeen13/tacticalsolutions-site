@@ -4,14 +4,11 @@ date: 2026-12-10
 slug: "non-conformance-nine-days"
 author: "Anthony Keen"
 proofArm: "weft"
-summary: "One deviation, five hand-offs, nine days, and an audit finding four months later. The QMS was never the problem. The capture is."
-cta:
-  label: "If this looks like your Tuesday, reply"
-  href: "mailto:business@tacticalsolutions.com"
+summary: "One deviation, from the press to the audit, and every hand-off where the context falls out. The QMS is rarely the failure. Capture is."
 draft: false
 ---
 
-The trace below is a composite. Weft PocketQS is pre-design-partner, so nobody is running this in their plant yet. The forms, the fields, the hand-offs and the day counts are drawn from real floors I have walked. The specific plant is assembled. The pattern is not.
+> The trace below is a composite. Weft PocketQS is pre-design-partner, so nobody is running this in their plant yet. The forms, the fields, the hand-offs and the day counts are drawn from real floors I have walked. The specific plant is assembled. The pattern is not.
 
 A press operator at Plant 2 pulls a part at 09:47 and the bore is 0.3mm under. He knows what it means. He has run this press for six years. He also knows it is not his to fix, so he does what the procedure says and writes it up.
 
