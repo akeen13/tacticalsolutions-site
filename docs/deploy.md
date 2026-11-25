@@ -38,12 +38,13 @@ Once the Pages project is live:
 
 1. Cloudflare dashboard → Pages project → Custom domains → Set up → `tacticalsolutions.com`.
 2. Cloudflare shows the required CNAME target.
-3. In easyDNS (the current DNS host), add:
-   - `CNAME tacticalsolutions.com → <pages-target>.pages.dev` (or the bare-apex variant Cloudflare recommends)
-   - Remove any existing `A 64.68.200.44` record if it conflicts
-4. Keep the existing `MX mx-caprica.easydns.com` record if we still want easyDNS mail — see [Mailbox](#mailbox) below for the alternative.
+3. **The apex needs a Cloudflare zone with Cloudflare nameservers.** The DNS is *not* on easyDNS — it is on Microsoft 365 / Azure DNS (`ns1–ns4.bdm.microsoftonline.com`), which cannot hold an apex CNAME. Adding the apex therefore means adding the domain as a Cloudflare zone and changing nameservers at the registrar (**Ascio** — easyDNS is only the hosting provider), then re-creating every mail record in the new zone. Apex `A 217.146.69.53` on the old host is retired by that, not repointed.
+4. Subdomains are cheaper and need no zone: a plain `CNAME <sub> → <project>.pages.dev` at Azure DNS is enough.
+5. Mail stays on Microsoft 365 (`MX 0 tacticalsolutions-com.mail.protection.outlook.com`), not `mx-caprica.easydns.com`. See [Mailbox](#mailbox). Do **not** add Cloudflare Email Routing — its MX would displace the M365 one and take `business@` down with it.
 
-Blocked until easyDNS access is confirmed — see [TACA-10](/TACA/issues/TACA-10).
+Full order of operations, rollback and the record baseline: the `cutover` runbook on [TACA-11](/TACA/issues/TACA-11). Current zone snapshot: `docs/dns-baseline-2026-11-25.txt`.
+
+Blocked on Ascio registrar access and Azure DNS/M365 admin on the tenant — see [TACA-11](/TACA/issues/TACA-11).
 
 ## Environment variables
 
@@ -58,11 +59,13 @@ Blocked until easyDNS access is confirmed — see [TACA-10](/TACA/issues/TACA-10
 
 ## Mailbox
 
-Separately tracked on [TACA-10](/TACA/issues/TACA-10). Approach:
+Tracked on [TACA-11](/TACA/issues/TACA-11).
 
-- `pov@tacticalsolutions.com` forwarded via [ImprovMX](https://improvmx.com) (free tier, forwards to a real inbox).
-- SPF / DKIM / DMARC records from Buttondown land in the same DNS zone.
-- All DNS edits happen at easyDNS (current DNS host) — blocked on access.
+`business@` and `anthony@tacticalsolutions.com` are already live and already linked from the shipped pages — the `/prosentinel` CTAs and intake form compose a `mailto:` to `business@`. Nothing below may break them.
+
+- `pov@tacticalsolutions.com` is a **shared mailbox in the existing Microsoft 365 tenant** (`tacticalfoodpac`), not an ImprovMX forward: the MX already belongs to M365, so a second MX provider fights it.
+- Sending from the tenant needs no SPF change — the existing `-all` record already authorises `spf.protection.outlook.com`. A third-party sender (Buttondown, Mailchimp) does need its own `include:` before `-all`.
+- DKIM already exists (`selector1`/`selector2` → the tenant). DNS edits happen at **Azure DNS**, nameservers at **Ascio** — blocked on access.
 
 ## Rollback
 
