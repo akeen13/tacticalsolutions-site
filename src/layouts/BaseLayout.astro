@@ -136,6 +136,20 @@ const href = (link: NavLink) =>
       }
       header nav a { text-decoration: none; }
       header nav a:hover { text-decoration: underline; }
+      /* Narrow screens: the header links do not fit on one line, so let the
+         nav wrap and drop the brand onto its own row. */
+      @media (max-width: 40rem) {
+        header nav {
+          flex-wrap: wrap;
+          gap: 0.5rem 1rem;
+          padding: 0.85rem 1rem;
+        }
+        header nav .brand {
+          flex-basis: 100%;
+          margin-right: 0;
+        }
+        header nav .nav-cta { margin-left: auto; }
+      }
       header nav .nav-cta {
         border: 1px solid var(--accent);
         border-radius: 3px;
