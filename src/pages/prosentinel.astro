@@ -42,7 +42,7 @@ const metrics = [
     <h1>The SOC that handles the other 22 hours.</h1>
     <p class="lede">
       Your team can run point for two hours a day. ProSentinel runs the other
-      twenty-two — triaging alerts, deciding what matters, and acting on the ones
+      twenty-two. Triaging alerts, deciding what matters, and acting on the ones
       that do. A human is in the loop only for the calls that actually need one.
     </p>
     <div class="cta-row">
@@ -65,7 +65,7 @@ const metrics = [
     </p>
     <p>
       Hiring more analysts does not fix this. The work that breaks coverage is
-      the work nobody wants — repetitive alert triage, lookups across five tools,
+      the work nobody wants: repetitive alert triage, lookups across five tools,
       the same playbook for the eightieth time this week. The good people quit.
       The queue grows.
     </p>
@@ -91,7 +91,7 @@ const metrics = [
         <p>
           ProSentinel ingests every signal your SIEM, EDR, identity, and network
           tools already produce. It correlates across them in real time and
-          reconstructs what actually happened — not what each tool reported in
+          reconstructs what actually happened, not what each tool reported in
           isolation.
         </p>
       </div>
@@ -108,8 +108,8 @@ const metrics = [
       <div class="card">
         <h3>Act.</h3>
         <p>
-          ProSentinel executes the response — isolate the host, disable the token,
-          push the policy, open the ticket — through your existing tools. Every
+          ProSentinel executes the response (isolate the host, disable the token,
+          push the policy, open the ticket) through your existing tools. Every
           action is logged, reversible where it should be, and visible in your SOC
           console.
         </p>
@@ -130,11 +130,11 @@ const metrics = [
       </div>
       <div class="card">
         <h3>Identity events.</h3>
-        <p>Impossible-travel, MFA fatigue, token theft, anomalous OAuth grants — investigated end to end.</p>
+        <p>Impossible-travel, MFA fatigue, token theft, anomalous OAuth grants. Investigated end to end.</p>
       </div>
       <div class="card">
         <h3>Endpoint response.</h3>
-        <p>Isolate, contain, kill process, snapshot — through your existing EDR, with full audit trail.</p>
+        <p>Isolate, contain, kill process, snapshot, through your existing EDR, with full audit trail.</p>
       </div>
       <div class="card">
         <h3>Phishing + email.</h3>
@@ -142,7 +142,7 @@ const metrics = [
       </div>
       <div class="card">
         <h3>Insider + data movement.</h3>
-        <p>Flagged exfil patterns matched to user, role, and recent context — escalated only when warranted.</p>
+        <p>Flagged exfil patterns matched to user, role, and recent context. Escalated only when warranted.</p>
       </div>
       <div class="card">
         <h3>Compliance evidence.</h3>
@@ -168,7 +168,7 @@ const metrics = [
     <ul class="rule-list">
       <li>Action thresholds are configurable per playbook, per asset class, per time of day.</li>
       <li>Every autonomous action is one click to reverse, with the evidence attached.</li>
-      <li>Every escalation arrives as a one-screen brief — what happened, what ProSentinel did, what's left to decide.</li>
+      <li>Every escalation arrives as a one-screen brief: what happened, what ProSentinel did, what's left to decide.</li>
       <li>Every decision is auditable end to end, indefinitely.</li>
     </ul>
   </section>
@@ -274,7 +274,7 @@ const metrics = [
       <dt>Does ProSentinel replace my team?</dt>
       <dd>
         No. It removes the work your team should not be doing. The headcount you
-        keep moves up the stack — incident response, threat hunting, hardening —
+        keep moves up the stack (incident response, threat hunting, hardening)
         and stops drowning in triage.
       </dd>
       <dt>What stack will ProSentinel work with?</dt>
@@ -282,7 +282,7 @@ const metrics = [
         Target integrations for the first cohort: the major SIEMs (Splunk,
         Sentinel, Chronicle), the major EDRs (CrowdStrike, SentinelOne, Defender),
         the major identity providers (Okta, Entra, Google), and the response
-        surfaces that go with them. The first cohort sets the build order — tell us
+        surfaces that go with them. The first cohort sets the build order. Tell us
         your stack and it goes to the front.
       </dd>
       <dt>What if ProSentinel does the wrong thing?</dt>
@@ -364,7 +364,7 @@ const metrics = [
       '',
       `Pain: ${value('pain')}`,
     ];
-    const subject = `Design partner application — ${value('name') || 'ProSentinel'}`;
+    const subject = `Design partner application: ${value('name') || 'ProSentinel'}`;
     window.location.href =
       `mailto:${CONTACT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
   });

@@ -1,4 +1,4 @@
-# /pov — content drop-off
+# /pov: content drop-off
 
 Markdown lives here. One file per post. Filename convention:
 
@@ -26,7 +26,7 @@ draft: false
 ---
 ```
 
-Schema is validated at build — broken frontmatter fails the build with a readable error.
+Schema is validated at build. Broken frontmatter fails the build with a readable error.
 
 ## Drop-off path
 
