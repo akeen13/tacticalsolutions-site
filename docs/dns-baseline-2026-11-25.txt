@@ -1,0 +1,54 @@
+# DNS baseline — tacticalsolutions.com
+# Captured 2026-11-25, queried directly against the authoritative server
+# ns1.bdm.microsoftonline.com (non-recursive), plus RDAP.
+#
+# AXFR is refused by Azure DNS, and the zone serial is 1, so there is no
+# transferable zone file. This hand enumeration is the authoritative
+# rollback reference until an export is taken from the Azure portal/CLI
+# with tenant credentials.
+#
+# The Azure zone is NOT deleted during cutover. Only delegation moves.
+# Rolling back means repointing NS at Ascio; every value below is still
+# in place at Azure when that happens.
+#
+# Zone-wide facts
+#   Hosted by          Azure DNS / Microsoft 365 (SOA azuredns-hostmaster.microsoft.com)
+#   Registrar          Ascio Technologies, Inc (IANA 106)
+#   Status             clientTransferProhibited (does not block NS changes)
+#   Expiry             2028-01-29
+#   DNSSEC             unsigned — no DS at parent, no DNSKEY in zone
+#   CAA                none
+#   AAAA at apex       none
+#   Apex A also backs  www (www is a CNAME to apex)
+
+tacticalsolutions.com.                       1800  IN  A       217.146.69.53
+www.tacticalsolutions.com.                   1800  IN  CNAME   tacticalsolutions.com.
+
+tacticalsolutions.com.                       3600  IN  MX      0 tacticalsolutions-com.mail.protection.outlook.com.
+tacticalsolutions.com.                       1800  IN  TXT     "v=spf1 include:spf.protection.outlook.com -all"
+tacticalsolutions.com.                       1800  IN  TXT     "mscid=yfBM9jHD61uAiy8mygn3i+88Rwi30vGhU5maC/tbV6JUGfoKXbBbJJSnTXjJnmwql+inikmGOO0JGFH6R2QhWA=="
+tacticalsolutions.com.                       1800  IN  TXT     "MS=ms16294419"
+tacticalsolutions.com.                       1800  IN  TXT     "klaviyo-site-verification=VFiS9j"
+_dmarc.tacticalsolutions.com.                3600  IN  TXT     "v=DMARC1; p=none;"
+selector1._domainkey.tacticalsolutions.com.  3600  IN  CNAME   selector1-tacticalsolutions-com._domainkey.tacticalfoodpac.p-v1.dkim.mail.microsoft.
+selector2._domainkey.tacticalsolutions.com.  3600  IN  CNAME   selector2-tacticalsolutions-com._domainkey.tacticalfoodpac.p-v1.dkim.mail.microsoft.
+autodiscover.tacticalsolutions.com.          3600  IN  CNAME   autodiscover.outlook.com.
+
+tacticalsolutions.com.                       3600  IN  SOA     ns1.bdm.microsoftonline.com. azuredns-hostmaster.microsoft.com. 1 3600 300 2419200 300
+tacticalsolutions.com.                       172800 IN NS      ns1.bdm.microsoftonline.com.
+tacticalsolutions.com.                       172800 IN NS      ns2.bdm.microsoftonline.com.
+tacticalsolutions.com.                       172800 IN NS      ns3.bdm.microsoftonline.com.
+tacticalsolutions.com.                       172800 IN NS      ns4.bdm.microsoftonline.com.
+
+# Absent, and therefore safe to leave absent:
+#   pov.*                       (no collision — free to create)
+#   mail / msoid / sip / lyncdiscover / enterpriseregistration / enterpriseenrollment
+#   _sip._tls / _autodiscover._tcp   (Exchange Online is not provisioned on this
+#                                    domain — mail is inbound-only via MX plus DKIM;
+#                                    there is no hybrid/autodiscover service record)
+#
+# Not DNS, but part of the same surface and captured for completeness:
+#   apex HTTPS      Let's Encrypt, CN tacticalsolutions.com, expires 2027-01-13, auto-renew
+#   web origin      217.146.69.53 = sn-69-53.tll07.zoneas.eu (easyDNS hosting, Apache/ZoneOS)
+#   apex /           200 — Tactical Foodpack / Chef Urban marketing page
+#   apex /pov        404
