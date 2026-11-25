@@ -6,8 +6,8 @@ author: "Anthony Keen"
 proofArm: "applied"
 summary: "We have not run a Loop Pilot yet. Three commitments we are publishing before the first signature, and what they cost us."
 cta:
-  label: "Two Loop Pilot slots open for Q1. Reply if there is a loop you want closed"
-  href: "mailto:business@tacticalsolutions.com"
+  label: "Two Loop Pilot slots open for Q1. See the terms or reply with the loop"
+  href: "/applied?utm_source=pov&utm_medium=web&utm_campaign=pov-2026-12-17-consulting-principles&utm_content=cta"
 draft: false
 ---
 
