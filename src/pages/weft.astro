@@ -1,0 +1,466 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
+
+const CONTACT = 'business@tacticalsolutions.com';
+
+const navLinks = [
+  { label: 'The problem', href: '#problem' },
+  { label: 'The loop', href: '#loop' },
+  { label: 'Trust', href: '#trust' },
+  { label: 'Walkthrough', href: '#walkthrough' },
+];
+
+const proofTiles = [
+  'Every non-conformance captured at the machine, in under 60 seconds.',
+  'CAPAs drafted autonomously. The quality lead approves, and stops authoring.',
+  'Audit trail kept current in the background: ISO, FDA, customer.',
+  'Built for plants and crews, not HQ.',
+];
+---
+
+<BaseLayout
+  title="Weft PocketQS"
+  description="Your quality system, run from a pocket. Capture a non-conformance on your phone. Weft drafts the CAPA, pulls the root cause, and keeps the audit trail current."
+  canonicalPath="/weft"
+  brandLabel="Weft PocketQS"
+  brandHref="/weft"
+  navLinks={navLinks}
+  navCta={{ label: 'Book a walkthrough', href: '#walkthrough' }}
+  wide
+>
+  <section id="hero">
+    <p class="eyebrow">Autonomous quality operations</p>
+    <h1>Your quality system, run from a pocket.</h1>
+    <p class="lede">
+      Capture a non-conformance on your phone. Weft PocketQS drafts the CAPA,
+      pulls the root cause from your own event history, and keeps the audit trail
+      current. Your people run the line, not the paperwork.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href="#walkthrough">Book a 20-min walkthrough</a>
+      <a class="btn secondary" href="#loop">See the loop</a>
+    </div>
+    <p class="hero-proof">
+      Built by Tactical Solutions. Pre-launch: we are opening a small first cohort
+      of design partners, not selling generally yet.
+    </p>
+  </section>
+
+  <section id="problem">
+    <h2>The 40 hours a week you don't have.</h2>
+    <p>
+      Most quality programmes fail the same way. Not because teams don't care.
+      Because the system costs 40 hours a week of admin nobody has.
+    </p>
+    <p>Right now, on your floor:</p>
+    <ul class="rule-list">
+      <li>Operators jot non-conformances on a clipboard. Half never make it into the QMS.</li>
+      <li>The quality lead retypes them at 5pm, guesses the cause, drafts the CAPA next week.</li>
+      <li>The audit trail is a folder of PDFs nobody trusts until an auditor shows up.</li>
+      <li>Continuous improvement is a slide. The actual loop, find and fix and learn, does not close.</li>
+    </ul>
+    <p class="sub-line">
+      The fix is not another QMS tab. It is removing the admin from the loop
+      entirely.
+    </p>
+    <p class="aside-link">
+      What that looks like in one deviation, hour by hour:
+      <a href={withBase('/pov/non-conformance-nine-days')}>the non-conformance that takes nine days to become a number</a>.
+    </p>
+  </section>
+
+  <section id="loop">
+    <h2>The loop.</h2>
+    <p class="lede">
+      Weft PocketQS closes the quality loop. Four steps, running in the
+      background, from a phone in a pocket.
+    </p>
+    <div class="step-grid">
+      <div class="card step">
+        <p class="step-num">1. Capture</p>
+        <h3>At the machine, under 60 seconds.</h3>
+        <p>
+          The operator opens the app, points the camera, talks or types. Product,
+          line, shift and cause code are extracted automatically. No forms.
+        </p>
+      </div>
+      <div class="card step">
+        <p class="step-num">2. Triage</p>
+        <h3>As it lands.</h3>
+        <p>
+          Severity is classified, the event routed to the right lead, and every
+          related event from the last 90 days pulled in. Repeat offenders show up
+          as repeat offenders, not fresh tickets.
+        </p>
+      </div>
+      <div class="card step">
+        <p class="step-num">3. CAPA</p>
+        <h3>Drafted, not authored.</h3>
+        <p>
+          A corrective and preventive action is written against your own playbook:
+          root cause, containment, corrective, preventive, verification. The
+          quality lead edits and approves. They stop being the typist.
+        </p>
+      </div>
+      <div class="card step">
+        <p class="step-num">4. Audit trail</p>
+        <h3>Always current.</h3>
+        <p>
+          Every event, decision, signature and attachment is logged against your
+          framework: ISO 9001, IATF, FDA 21 CFR Part 820, customer-specific. When
+          the auditor walks in, the binder is already built.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="capabilities">
+    <h2>What Weft PocketQS handles.</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Mobile capture.</h3>
+        <p>Photo, video, voice, barcode, measurement. Any shift, any phone. Offline-first.</p>
+      </div>
+      <div class="card">
+        <h3>CAPA drafting.</h3>
+        <p>Pulls from your SOPs, prior CAPAs and the event itself. Writes the 8D or your internal format.</p>
+      </div>
+      <div class="card">
+        <h3>Root-cause assist.</h3>
+        <p>5-Why and fishbone drafted against actual event history, not a blank page.</p>
+      </div>
+      <div class="card">
+        <h3>Non-conformance management.</h3>
+        <p>Severity, disposition, scrap, rework, containment. Linked to batches, work orders, machines.</p>
+      </div>
+      <div class="card">
+        <h3>Document control.</h3>
+        <p>SOP versioning, training attestations and redlines, tracked automatically.</p>
+      </div>
+      <div class="card">
+        <h3>Supplier NCRs.</h3>
+        <p>Issue, track and close non-conformances with suppliers without another email thread.</p>
+      </div>
+      <div class="card">
+        <h3>Audit mode.</h3>
+        <p>Pull any finding, any framework, any window. Export the exact packet an auditor asks for.</p>
+      </div>
+      <div class="card">
+        <h3>Integrations.</h3>
+        <p>
+          Target integrations for the first cohort: ERP, MES and your existing QMS
+          if you have one. We meet the floor where it is.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="trust">
+    <h2>Humans in the loop, where it matters.</h2>
+    <p>
+      Weft PocketQS does not make quality decisions alone. It does the work
+      around the decision.
+    </p>
+    <p class="pull-line">The system drafts. Your quality lead approves.</p>
+    <ul class="rule-list">
+      <li>CAPAs are drafted, never closed autonomously.</li>
+      <li>Dispositions on high-severity non-conformances always require a named signer.</li>
+      <li>Every action is logged with the exact prompt, data and model version that produced it. Defensible in audit, reproducible in review.</li>
+    </ul>
+    <p>
+      We treat a quality system the way a regulated auditor would. If we cannot
+      prove how a decision was made, we do not ship it.
+    </p>
+  </section>
+
+  <section id="proof">
+    <h2>What we measure.</h2>
+    <p class="lede">
+      These are the numbers the first cohort sets the baseline for. Nothing is
+      claimed yet, which is why there are no logos and no figures.
+    </p>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Hours saved per site, per week.</h3>
+        <p>The number that decides whether this was worth the change.</p>
+      </div>
+      <div class="card">
+        <h3>Time to first CAPA draft.</h3>
+        <p>Capture to an approved draft, measured on real captures.</p>
+      </div>
+      <div class="card">
+        <h3>Audit findings closed per cycle.</h3>
+        <p>Against your frameworks, not ours.</p>
+      </div>
+      <div class="card">
+        <h3>Sites per quality lead.</h3>
+        <p>How many plants one lead can actually run.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="who-for">
+    <h2>Who this is for.</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Contract manufacturing, multi-site.</h3>
+        <p>
+          Quality and operations leaders at 50 to 500 person plants under IATF
+          16949 pressure. One quality lead, three to five sites, an OEM customer
+          asking for traceability you do not have time to produce. You run QS on
+          clipboards, spreadsheets and a QMS you half trust. You are the one who
+          stays late to close the audit packet.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Regulated field service.</h3>
+        <p>
+          Same shape of problem under ISO 9001, FDA 21 CFR Part 820 or
+          customer-audit pressure. Distributed work, an audit trail reconstructed
+          after the fact, one lead covering too many sites.
+        </p>
+      </div>
+    </div>
+    <p class="footnote">
+      Probably not for a Fortune 500 plant with a 12-person QA department and a
+      fully deployed enterprise QMS it is happy with. We do not replace SAP QM. We
+      remove the admin around it.
+    </p>
+  </section>
+
+  <section id="pricing">
+    <h2>How it is priced.</h2>
+    <ul class="rule-list">
+      <li>Per-site subscription. Priced by plant, not by seat. Operators do not pay to capture events.</li>
+      <li>Design-partner pricing for the first cohort. Fixed price, fixed scope, priced to prove the loop rather than fund growth.</li>
+      <li>No per-CAPA fees and no per-audit fees. Your quality system should not meter your quality system.</li>
+    </ul>
+    <p class="sub-line">
+      Numbers are quoted on a walkthrough, because they depend on sites and scope.
+      Nothing is published as a price list yet.
+    </p>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+    <dl class="faq">
+      <dt>Do you replace our existing QMS?</dt>
+      <dd>
+        Usually no. We sit on top and close the admin loop. If your QMS is the
+        bottleneck, we will tell you honestly.
+      </dd>
+      <dt>Can the system sign a CAPA?</dt>
+      <dd>
+        No. Humans sign. The system drafts, routes and keeps the record. That is
+        non-negotiable in regulated environments.
+      </dd>
+      <dt>How does this work offline?</dt>
+      <dd>
+        Capture is offline-first. Events sync when the phone is back on the
+        network. The floor does not wait for wifi.
+      </dd>
+      <dt>What frameworks do you support?</dt>
+      <dd>
+        ISO 9001, IATF 16949 and FDA 21 CFR Part 820 out of the box.
+        Customer-specific frameworks (PPAP, APQP, your plant's internal) are
+        configured per deployment.
+      </dd>
+      <dt>What happens to our data?</dt>
+      <dd>
+        Your data stays your data. We do not train shared models on customer
+        quality records. Every inference is logged with the exact inputs and model
+        version used.
+      </dd>
+      <dt>How long does a site take?</dt>
+      <dd>
+        That is what the first cohort measures. The commitment we are setting
+        ourselves: first non-conformance captured inside a week, first drafted CAPA
+        approved by the end of week two, full audit-trail coverage in 30 days.
+      </dd>
+      <dt>What happens to our paper records?</dt>
+      <dd>
+        Ingested, indexed, searchable. The back catalogue does not disappear. It
+        becomes queryable.
+      </dd>
+    </dl>
+  </section>
+
+  <section id="walkthrough">
+    <h2>Book a 20-min walkthrough.</h2>
+    <p class="lede">
+      Show us one site. We show you the loop on your data, and if the fit is there
+      we scope the first cohort on the same call.
+    </p>
+    <form id="intake" class="intake" novalidate>
+      <p class="intake-intro">Six fields, one email.</p>
+      <div class="field">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required />
+      </div>
+      <div class="field">
+        <label for="f-role">Role</label>
+        <input id="f-role" name="role" type="text" autocomplete="organization-title" required />
+      </div>
+      <div class="field">
+        <label for="f-sites">Sites you cover</label>
+        <input id="f-sites" name="sites" type="text" inputmode="numeric" required
+          placeholder="How many plants?" />
+      </div>
+      <div class="field">
+        <label for="f-qms">Current QMS</label>
+        <select id="f-qms" name="qms" required>
+          <option value="">Select one</option>
+          <option>Paper and spreadsheets</option>
+          <option>A QMS, lightly used</option>
+          <option>A QMS, fully deployed</option>
+          <option>Nothing yet</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-frameworks">Frameworks you are audited against</label>
+        <input id="f-frameworks" name="frameworks" type="text" required
+          placeholder="ISO 9001, IATF, FDA, customer-specific" />
+      </div>
+      <div class="field">
+        <label for="f-pain">Biggest weekly time sink</label>
+        <textarea id="f-pain" name="pain" rows="3" required
+          placeholder="What eats the week?"></textarea>
+      </div>
+      <div class="cta-row">
+        <button class="btn" type="submit">Send request</button>
+        <span class="field-note">
+          Opens your mail client, addressed to {CONTACT}, with these answers filled in.
+        </span>
+      </div>
+    </form>
+  </section>
+
+  <section id="final-cta">
+    <h2>Your quality system should not eat your quality team.</h2>
+    <p class="lede">
+      Weft PocketQS runs it in the background so your people can run the line.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href="#walkthrough">Book a 20-min walkthrough</a>
+      <a class="btn secondary" href={`mailto:${CONTACT}`}>Email the team</a>
+    </div>
+  </section>
+
+  <Fragment slot="footer">
+    <div class="site-footer wide">
+      <p class="footer-brand">Tactical Solutions · Weft PocketQS</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#problem">The problem</a>
+        <a href="#loop">The loop</a>
+        <a href="#trust">Trust</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#walkthrough">Walkthrough</a>
+      </nav>
+      <p class="small-print">
+        Weft PocketQS is built by <a href={withBase('/')}>Tactical Solutions</a>,
+        the same platform behind
+        <a href={withBase('/prosentinel')}>ProSentinel</a>. One autonomy layer,
+        two go-to-markets.
+      </p>
+    </div>
+  </Fragment>
+</BaseLayout>
+
+<script>
+  // v0 submission path: compose a mailto with the field values prefilled.
+  // No third-party form account and no spend. Swap to a form endpoint later
+  // without changing the fields.
+  const form = document.getElementById('intake') as HTMLFormElement | null;
+  const CONTACT = 'business@tacticalsolutions.com';
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const value = (key: string) => String(data.get(key) ?? '').trim();
+    const lines = [
+      `Name: ${value('name')}`,
+      `Role: ${value('role')}`,
+      `Sites covered: ${value('sites')}`,
+      `Current QMS: ${value('qms')}`,
+      `Frameworks audited against: ${value('frameworks')}`,
+      '',
+      `Biggest weekly time sink: ${value('pain')}`,
+    ];
+    const subject = `Weft PocketQS walkthrough: ${value('name') || 'first cohort'}`;
+    window.location.href =
+      `mailto:${CONTACT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+  });
+</script>
+
+<style>
+  .hero-proof {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    color: var(--fg-muted);
+    font-size: 0.9rem;
+  }
+  .aside-link { font-size: 0.9rem; color: var(--fg-muted); }
+  .sub-line { color: var(--fg-muted); max-width: 60ch; }
+  .footnote { font-size: 0.875rem; color: var(--fg-muted); }
+  .pull-line { font-size: 1.15rem; font-weight: 600; }
+  .step-grid {
+    display: grid;
+    gap: 1.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    margin-top: 1.5rem;
+  }
+  .step-num {
+    margin: 0 0 0.3rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg-muted);
+  }
+  .intake {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    max-width: 34rem;
+  }
+  .intake-intro { margin: 0 0 1.25rem; font-weight: 600; }
+  .field { margin-bottom: 1rem; display: flex; flex-direction: column; }
+  .field label { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .field input,
+  .field select,
+  .field textarea {
+    font: inherit;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+  .field-note { font-size: 0.8rem; color: var(--fg-muted); }
+  .faq dt { font-weight: 600; margin-top: 1.25rem; }
+  .faq dd { margin: 0.3rem 0 0; color: var(--fg-muted); max-width: 68ch; }
+  .site-footer {
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 2rem;
+    max-width: 60rem;
+  }
+  .footer-brand { margin: 0 0 0.6rem; font-weight: 600; color: var(--fg); }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    margin-bottom: 0.9rem;
+  }
+  .footer-links a { text-decoration: none; }
+  .footer-links a:hover { text-decoration: underline; }
+  .small-print { margin: 0; max-width: 60ch; }
+</style>
