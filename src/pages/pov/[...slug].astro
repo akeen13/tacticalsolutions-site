@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getPovPosts } from '../../lib/pov';
+import { withBase } from '../../lib/urls';
 
 export async function getStaticPaths() {
   const posts = await getPovPosts();
@@ -13,6 +14,16 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+// CTA hrefs can be internal paths, absolute URLs or mailto. Only internal
+// paths need the base prefix; query strings and fragments must survive.
+const ctaHref = (() => {
+  const raw = post.data.cta?.href;
+  if (!raw || /^(?:[a-z]+:|\/\/)/i.test(raw)) return raw;
+  const [path, ...rest] = raw.split('?');
+  const query = rest.length ? `?${rest.join('?')}` : '';
+  return `${withBase(path)}${query}`;
+})();
 
 const fmt = post.data.date.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -39,7 +50,7 @@ const fmt = post.data.date.toLocaleDateString('en-US', {
     {
       post.data.cta && (
         <div class="cta">
-          <a href={post.data.cta.href}>{post.data.cta.label}</a>
+          <a href={ctaHref}>{post.data.cta.label}</a>
         </div>
       )
     }
