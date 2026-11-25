@@ -31,7 +31,11 @@ const {
   canonicalPath,
   brandLabel = 'Tactical Solutions',
   brandHref = '/',
-  navLinks = [{ label: 'POV', href: '/pov' }],
+  navLinks = [
+    { label: 'Weft', href: '/weft' },
+    { label: 'ProSentinel', href: '/prosentinel' },
+    { label: 'POV', href: '/pov' },
+  ],
   navCta,
   wide = false,
   bodyClass,
@@ -96,7 +100,15 @@ const href = (link: NavLink) =>
     </main>
     <footer>
       <slot name="footer">
-        <p>&copy; {new Date().getFullYear()} Tactical Solutions.</p>
+        <div class="site-footer">
+          <p class="footer-brand">Tactical Solutions</p>
+          <nav class="footer-links" aria-label="Footer">
+            <a href={withBase('/weft')}>Weft PocketQS</a>
+            <a href={withBase('/prosentinel')}>ProSentinel</a>
+            <a href={withBase('/pov')}>POV</a>
+          </nav>
+          <p class="small-print">&copy; {new Date().getFullYear()} Tactical Solutions.</p>
+        </div>
       </slot>
     </footer>
     <style is:global>
@@ -126,7 +138,8 @@ const href = (link: NavLink) =>
         margin: 0 auto;
         padding: 1rem 1.25rem;
         display: flex;
-        gap: 1.5rem;
+        flex-wrap: wrap;
+        gap: 0.6rem 1.25rem;
         align-items: baseline;
       }
       header nav .brand {
@@ -134,7 +147,14 @@ const href = (link: NavLink) =>
         letter-spacing: -0.01em;
         margin-right: auto;
       }
-      header nav a { text-decoration: none; }
+      header nav a {
+        text-decoration: none;
+        /* Comfortable tap target on a shop-floor phone. */
+        padding: 0.35rem 0;
+        min-height: 1.9rem;
+        display: inline-flex;
+        align-items: center;
+      }
       header nav a:hover { text-decoration: underline; }
       header nav .nav-cta {
         border: 1px solid var(--accent);
@@ -229,6 +249,26 @@ const href = (link: NavLink) =>
         margin: 0 auto;
         padding: 1.25rem;
       }
+      .site-footer {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 1.25rem;
+      }
+      .site-footer p { padding: 0; }
+      .footer-brand {
+        margin: 0 0 0.6rem;
+        font-weight: 600;
+        color: var(--fg);
+      }
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 1.25rem;
+        margin-bottom: 0.9rem;
+      }
+      .footer-links a { text-decoration: none; }
+      .footer-links a:hover { text-decoration: underline; }
+      .small-print { margin: 0; max-width: 60ch; }
       h1, h2, h3 { letter-spacing: -0.015em; line-height: 1.2; }
       h1 { font-size: 2rem; margin: 0 0 0.5rem; }
       h2 { font-size: 1.5rem; margin-top: 2rem; }

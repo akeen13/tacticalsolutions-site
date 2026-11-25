@@ -5,6 +5,7 @@ import { withBase } from '../lib/urls';
 const CONTACT = 'business@tacticalsolutions.com';
 
 const navLinks = [
+  { label: 'Weft', href: '/weft' },
   { label: 'How it works', href: '#how-it-works' },
   { label: 'Proof', href: '#proof' },
   { label: 'For MSSPs', href: '#for-mssps' },
@@ -330,6 +331,7 @@ const metrics = [
     <div class="site-footer wide">
       <p class="footer-brand">Tactical Solutions · ProSentinel</p>
       <nav class="footer-links" aria-label="Footer">
+        <a href={withBase('/weft')}>Weft PocketQS</a>
         <a href="#how-it-works">How it works</a>
         <a href="#proof">Proof</a>
         <a href="#for-mssps">For MSSPs</a>
