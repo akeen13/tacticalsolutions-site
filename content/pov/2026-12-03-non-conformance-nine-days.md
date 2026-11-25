@@ -7,7 +7,7 @@ proofArm: "weft"
 summary: "One deviation, from the press to the audit, and every hand-off where the context falls out. The QMS is rarely the failure. Capture is."
 cta:
   label: "Book a 20-min walkthrough"
-  href: "mailto:business@tacticalsolutions.com?subject=Weft%20PocketQS%20walkthrough"
+  href: "/weft?utm_source=pov&utm_medium=web&utm_campaign=pov-2026-12-03-non-conformance&utm_content=cta"
 draft: false
 ---
 
