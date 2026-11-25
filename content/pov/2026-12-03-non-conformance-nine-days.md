@@ -5,6 +5,9 @@ slug: "non-conformance-nine-days"
 author: "Anthony Keen"
 proofArm: "weft"
 summary: "One deviation, from the press to the audit, and every hand-off where the context falls out. The QMS is rarely the failure. Capture is."
+cta:
+  label: "Book a 20-min walkthrough"
+  href: "mailto:business@tacticalsolutions.com?subject=Weft%20PocketQS%20walkthrough"
 draft: false
 ---
 
@@ -45,5 +48,7 @@ Three things fix it, and none of them are a better QMS:
 The audit trail then falls out of the system running, instead of being reconstructed in the four weeks before somebody arrives.
 
 Two numbers would tell you whether it worked: median hours from capture to a routed, owned action. Target: under four, from nine days. And the share of CAPAs whose root cause is confirmed by the person who raised the deviation. Target: most of them, instead of none.
+
+That is what Weft PocketQS is: capture at the machine in under 60 seconds, no form, no tray, no spreadsheet, the CAPA drafted from the record, and the trail current because the system runs. It is pre-design-partner. The first cohort is what is open, and the walkthrough is 20 minutes on your own data.
 
 If you run quality at a multi-site contract manufacturer and this trace looks like your Tuesday, reply. Same if you run it anywhere the paperwork is beating you. That is the whole ask.
