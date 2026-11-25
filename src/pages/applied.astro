@@ -1,0 +1,400 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
+
+const CONTACT = 'business@tacticalsolutions.com';
+
+const navLinks = [
+  { label: 'The pilot', href: '#pilot' },
+  { label: 'Principles', href: '#principles' },
+  { label: 'Price', href: '#price' },
+  { label: 'Failure terms', href: '#failure' },
+];
+---
+
+<BaseLayout
+  title="Tactical Solutions Applied"
+  description="Autonomy delivery for operators. One loop into production in 90 days, fixed fee, handed over with a runbook your team owns. No Loop Pilot has been run yet. Here are the terms before the first signature."
+  canonicalPath="/applied"
+  brandLabel="Tactical Solutions Applied"
+  brandHref="/applied"
+  navLinks={navLinks}
+  navCta={{ label: 'Start a scoping call', href: '#apply' }}
+  wide
+>
+  <section id="hero">
+    <p class="eyebrow">Autonomy delivery</p>
+    <h1>We hand you autonomy, not a PowerPoint.</h1>
+    <p class="lede">
+      Tactical Solutions Applied installs autonomous operations into your stack,
+      on your data, and hands them over. One loop into production in 90 days for a
+      fixed fee. Your team owns it at the end, with a runbook carrying your name
+      rather than ours.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href="#apply">Start a scoping call</a>
+      <a class="btn secondary" href="#pilot">What a pilot is</a>
+    </div>
+    <p class="hero-proof">
+      Pre-design-partner. We have not run a Loop Pilot yet, so none of this is a
+      case study. It is the terms, published before the first signature. Two slots
+      for Q1.
+    </p>
+  </section>
+
+  <section id="pilot">
+    <h2>The Loop Pilot.</h2>
+    <p class="lede">
+      One operational loop, closed to production inside your stack, in 90 days,
+      at a fixed price. Not a strategy deck. Not a proof of concept nobody runs.
+      A working autonomous workflow handed over with the documentation to run it.
+    </p>
+    <p>
+      "Loop" is the useful word here. It means a repeating piece of operational
+      work with a decision inside it: a triage that has to be sorted, a
+      non-conformance that has to be captured and dispositioned, a job that has to
+      be scheduled against constraints. Pick the one eating the most hours from
+      the fewest people. That is the pilot.
+    </p>
+    <p class="pull-line">The handoff is the deliverable.</p>
+    <p>
+      The demonstrable failure mode on autonomous systems is not the model. It is
+      the handoff: the team that built it cannot let go, and the team receiving it
+      cannot run it without the builders on a rope. So the handoff gets designed
+      from day one, not bolted on at the end.
+    </p>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Weeks 1 to 2: scope.</h3>
+        <p>
+          The loop, the evidence it will run on, the boundaries of its autonomy
+          inside your stack. Written down, because a scope that lives in a
+          conversation cannot be tested at cutover.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Weeks 3 to 12: build, with the runbook running alongside.</h3>
+        <p>
+          The runbook is written in week one and rewritten every fortnight against
+          what is actually happening. By cutover your team has edited parts of it
+          themselves.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Cutover.</h3>
+        <p>
+          The loop runs in production with your team on it and us beside them. Then
+          we leave. Expansions are separate engagements, scoped with the knowledge
+          that only exists once the first loop is running.
+        </p>
+      </div>
+    </div>
+    <p class="aside-link">
+      The three principles this runs on, argued in full:
+      <a href={withBase('/pov/three-things-consulting-arm')}>three things we're designing our consulting arm around</a>.
+    </p>
+  </section>
+
+  <section id="principles">
+    <h2>Three commitments, published before anyone signs.</h2>
+    <p>
+      Written down because once it is written down we have to hold it. If you are
+      weighing us up, you should know the constraints before a call, not after.
+    </p>
+    <ul class="rule-list">
+      <li>
+        <strong>Handoff is the work, not the build.</strong> The runbook is a
+        deliverable. Written week one, blunt, treating the operator as an adult.
+      </li>
+      <li>
+        <strong>One named human per loop. No committees.</strong> One person on
+        your side with standing authority to pull the ripcord without asking
+        anybody first. If a prospect cannot name them before signature, we do not
+        sign. Distributed ownership at the start is an unowned system by month
+        four.
+      </li>
+      <li>
+        <strong>One loop, fully shipped. Not three, half-shipped.</strong> The
+        statement of work caps it at one loop into production. Overscoping at sale
+        is how consulting delivery fails, and the three-loop pilot with two demos
+        and a dead prototype is the standard shape.
+      </li>
+    </ul>
+  </section>
+
+  <section id="price">
+    <h2>Fixed, and what moves it.</h2>
+    <p>
+      <strong>$150,000, fixed fee, 90 days, one loop, one measurable outcome.</strong>
+      No day-rate creep, no change-order theatre, and a cutover date that does not
+      drift because somebody found more scope.
+    </p>
+    <p>
+      The first cohort is the only place that number moves. Take a slot before we
+      have a named case study and we discount the Pilot for the right to publish
+      it. You get the work cheaper, we get the reference. After that, the price is
+      the price.
+    </p>
+    <p>
+      If the number is wrong for your operation, there is a two-week paid scoping
+      sprint at $25,000, credited against the Pilot if you go ahead. You keep the
+      written scope either way. If the loop is not ready to run autonomously, we
+      say so and you keep the document.
+    </p>
+    <p class="sub-line">
+      Scope is agreed in writing before the fee is due. We quote nothing on a call
+      that we will not put in a statement of work.
+    </p>
+  </section>
+
+  <section id="failure">
+    <h2>What happens if it fails.</h2>
+    <p>
+      Every vendor's deck implies it will not. Worth naming, because it changes
+      what you are actually buying.
+    </p>
+    <p>
+      If we hit day 90 without a loop in production, you keep everything: the
+      operator, the runbook, the audit trail, the scope. The fee is the fee and it
+      does not come back, but nothing else does either. There is no licence to
+      keep paying and no support contract that quietly becomes mandatory.
+    </p>
+    <p class="pull-line">
+      The point of a handoff is that you do not need us afterwards. A consulting
+      arm that needs to be needed has not done the job.
+    </p>
+  </section>
+
+  <section id="who-for">
+    <h2>Who this is for, and who it is not.</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>For operators with a real problem.</h3>
+        <p>
+          Industrial, logistics, field service, security, regulated operations. You
+          have a loop eating hours your team cannot spare, a P&amp;L line that
+          shows it, and someone who can own the outcome. You want it closed, not
+          workshopped.
+        </p>
+      </div>
+      <div class="card">
+        <h3>For technical founders building vertical SaaS.</h3>
+        <p>
+          You need autonomy capability inside your product on a timeline you cannot
+          hit with the team you have. The result has to survive you handing it to
+          customers.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Not for a transformation programme.</h3>
+        <p>
+          If the outcome you need is a roadmap, a maturity model and a steering
+          group, a large firm does that better and we will say so. This is for a
+          loop in production inside a quarter.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+    <dl class="faq">
+      <dt>Has this run anywhere yet?</dt>
+      <dd>
+        Not yet. No Loop Pilot has been signed or run. The terms above are how the
+        first one will work, published while the shape is still a decision rather
+        than a story told after the fact.
+      </dd>
+      <dt>Is this the same product as ProSentinel or Weft?</dt>
+      <dd>
+        Same platform, same playbook, different delivery. Those two put autonomy
+        into a product we run. Applied puts it into your stack, on your data, and
+        hands it over. If you want a product rather than a build, start with
+        <a href={withBase('/prosentinel')}>ProSentinel</a> or
+        <a href={withBase('/weft')}>Weft PocketQS</a>.
+      </dd>
+      <dt>Who owns the code at the end?</dt>
+      <dd>
+        You do. The loop, the runbook and the audit trail run on your stack. There
+        is no runtime licence attached to the pilot.
+      </dd>
+      <dt>What stops the system doing something stupid in production?</dt>
+      <dd>
+        Scope agreed in the first fortnight, actions bounded to what the loop
+        actually owns, escalation designed in for the ambiguous cases. Nothing goes
+        into production with an unbounded action, and the named human can stop it
+        without asking.
+      </dd>
+      <dt>How much of my team's time does it take?</dt>
+      <dd>
+        More in weeks 1 to 2 than any week after it. Scoping needs the people who
+        know the loop. After that it is the named human plus whoever the runbook
+        names, and it drops away by cutover because that is the point.
+      </dd>
+      <dt>What does a scoping call cover?</dt>
+      <dd>
+        The loop, whether it is ready to run autonomously, who would own it, and
+        the evidence it would run on. If the honest answer is that it is not ready,
+        we say so on that call.
+      </dd>
+    </dl>
+  </section>
+
+  <section id="apply">
+    <h2>Two Loop Pilot slots for Q1.</h2>
+    <p class="lede">
+      Tell us the loop and the name of the person who would own it. If you have the
+      loop but not the name yet, send it anyway and we will work out whether that
+      person exists.
+    </p>
+    <form id="intake" class="intake" novalidate>
+      <p class="intake-intro">A scoping call starts here.</p>
+      <div class="field">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required />
+      </div>
+      <div class="field">
+        <label for="f-role">Role</label>
+        <input id="f-role" name="role" type="text" autocomplete="organization-title" required />
+      </div>
+      <div class="field">
+        <label for="f-company">Company</label>
+        <input id="f-company" name="company" type="text" autocomplete="organization" required />
+      </div>
+      <div class="field">
+        <label for="f-loop">The loop you want closed</label>
+        <textarea id="f-loop" name="loop" rows="3" required
+          placeholder="What repeats, how often, and whose week it eats."></textarea>
+      </div>
+      <div class="field">
+        <label for="f-owner">Who would own it on your side</label>
+        <input id="f-owner" name="owner" type="text"
+          placeholder="One name. Leave blank if nobody yet." />
+      </div>
+      <div class="field">
+        <label for="f-stack">What it would run on</label>
+        <textarea id="f-stack" name="stack" rows="2"
+          placeholder="Systems, data, and where a decision currently gets made."></textarea>
+      </div>
+      <div class="cta-row">
+        <button class="btn" type="submit">Send request</button>
+        <span class="field-note">
+          Opens your mail client, addressed to {CONTACT}, with these answers filled in.
+        </span>
+      </div>
+    </form>
+  </section>
+
+  <section id="final-cta">
+    <h2>One loop, one human, one handoff, 90 days.</h2>
+    <p class="lede">
+      Fixed price, and the runbook is yours at the end whether it works or not.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href="#apply">Start a scoping call</a>
+      <a class="btn secondary" href={`mailto:${CONTACT}`}>Email the team</a>
+    </div>
+  </section>
+
+  <Fragment slot="footer">
+    <div class="site-footer wide">
+      <p class="footer-brand">Tactical Solutions · Applied</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#pilot">The pilot</a>
+        <a href="#principles">Principles</a>
+        <a href="#price">Price</a>
+        <a href="#failure">Failure terms</a>
+        <a href="#apply">Scoping call</a>
+      </nav>
+      <p class="small-print">
+        Tactical Solutions Applied is the consulting arm of
+        <a href={withBase('/')}>Tactical Solutions</a>, alongside
+        <a href={withBase('/prosentinel')}>ProSentinel</a> and
+        <a href={withBase('/weft')}>Weft PocketQS</a>. One autonomy layer, three
+        go-to-markets.
+      </p>
+    </div>
+  </Fragment>
+</BaseLayout>
+
+<style>
+  .hero-proof {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    color: var(--fg-muted);
+    font-size: 0.9rem;
+  }
+  .aside-link { font-size: 0.9rem; color: var(--fg-muted); }
+  .sub-line { color: var(--fg-muted); max-width: 60ch; }
+  .pull-line { font-size: 1.15rem; font-weight: 600; }
+  .intake {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    max-width: 34rem;
+  }
+  .intake-intro { margin: 0 0 1.25rem; font-weight: 600; }
+  .field { margin-bottom: 1rem; display: flex; flex-direction: column; }
+  .field label { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .field input,
+  .field textarea {
+    font: inherit;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  .field input:focus,
+  .field textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+  .field-note { font-size: 0.8rem; color: var(--fg-muted); }
+  .faq dt { font-weight: 600; margin-top: 1.25rem; }
+  .faq dd { margin: 0.3rem 0 0; color: var(--fg-muted); max-width: 68ch; }
+  .site-footer {
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 2rem;
+    max-width: 60rem;
+  }
+  .footer-brand { margin: 0 0 0.6rem; font-weight: 600; color: var(--fg); }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    margin-bottom: 0.9rem;
+  }
+  .footer-links a { text-decoration: none; }
+  .footer-links a:hover { text-decoration: underline; }
+  .small-print { margin: 0; max-width: 60ch; }
+</style>
+
+<script>
+  // v0 submission path: compose a mailto with the field values prefilled.
+  // No third-party form account and no spend. Swap to a form endpoint later
+  // without changing the fields.
+  const form = document.getElementById('intake') as HTMLFormElement | null;
+  const CONTACT = 'business@tacticalsolutions.com';
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const value = (key: string) => String(data.get(key) ?? '').trim();
+    const lines = [
+      `Name: ${value('name')}`,
+      `Role: ${value('role')}`,
+      `Company: ${value('company')}`,
+      '',
+      `Loop: ${value('loop')}`,
+      `Owner on their side: ${value('owner') || 'not named yet'}`,
+      '',
+      `Would run on: ${value('stack')}`,
+    ];
+    const subject = `Loop Pilot scoping: ${value('company') || 'first cohort'}`;
+    window.location.href =
+      `mailto:${CONTACT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+  });
+</script>
