@@ -37,7 +37,7 @@ const {
   bodyClass,
 } = Astro.props;
 const siteName = 'Tactical Solutions';
-const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
+const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
 const canonical = canonicalPath
   ? new URL(withBase(canonicalPath), Astro.site).toString()
   : Astro.url.toString();
