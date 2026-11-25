@@ -56,6 +56,21 @@ Blocked on Ascio registrar access and Azure DNS/M365 admin on the tenant — see
 | `CLOUDFLARE_API_TOKEN` | repo secret | Required by `deploy.yml`. |
 | `CLOUDFLARE_ACCOUNT_ID` | repo secret | Required by `deploy.yml`. |
 | `CLOUDFLARE_PAGES_PROJECT` | repo variable | Gates the deploy workflow + names the project. |
+| `PUBLIC_PLAUSIBLE_DOMAIN` | build | Optional. Overrides the `data-domain` on the analytics tag. Defaults to `tacticalsolutions.com`. |
+| `PUBLIC_PLAUSIBLE_SRC` | build | Optional. Script URL for a self-hosted Plausible. Defaults to the hosted `script.js`. |
+
+## Analytics
+
+`BaseLayout.astro` carries one Plausible tag, so every page counts from the
+layout with no per-page work. Cookieless, so no cookie banner, and no tag
+manager.
+
+`data-domain` is pinned to `tacticalsolutions.com` rather than the deploy host,
+so the GitHub Pages preview and the eventual custom domain stay one continuous
+series instead of forking into two site entries. The domain has to exist in the
+Plausible account for events to be stored; before that, the tag loads and the
+events are accepted but nothing is retained. The tag is `is:inline` because
+Astro's default script processing drops `data-domain` off the emitted tag.
 
 ## Mailbox
 
