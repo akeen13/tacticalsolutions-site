@@ -19,7 +19,7 @@ The bottleneck is the last mile.
 
 The last mile is the ugly part nobody writes about. It's the radio on a security guard's hip, the clipboard on a manufacturing line, the three spreadsheets the QMS was supposed to replace. It's the judgment call at 2:14am when an alert fires and the on-call is at a wedding. It's the accountability question: who signed off, who owns the miss, who can be fired.
 
-Models don't close those loops. Systems do. And building those systems is not a prompt engineering problem. It's an operations problem dressed up as an AI problem.
+Models don't close those loops. Systems do. And building those systems is an operations problem dressed up as an AI problem, not a prompt engineering one.
 
 Three things I've learned that aren't in the model benchmarks:
 
@@ -30,7 +30,7 @@ The clean autonomy demo runs inside a notebook. The real one runs inside a ticke
 Every autonomous loop I've seen break in production breaks at the ambiguous case. Not the obvious false positive, not the obvious true positive, the one where the right answer depends on context the model doesn't have. Building that loop well means designing for the handoff, not the happy path. You don't close 100% autonomously. You close 80% autonomously and escalate the other 20% cleanly. That's the product.
 
 **3. Accountability is architecture.**
-If an autonomous system makes a call, someone has to own the outcome. The customer, usually. But the architecture has to make it possible: every decision logged, every input visible, every action reversible for the narrow window where reversal matters. If you can't audit it, you can't deploy it into a regulated ops environment. This is not a feature. It's the floor.
+If an autonomous system makes a call, someone has to own the outcome. The customer, usually. But the architecture has to make it possible: every decision logged, every input visible, every action reversible for the narrow window where reversal matters. If you can't audit it, you can't deploy it into a regulated ops environment. Call it the floor, not a feature.
 
 None of this is glamorous. It's why the consulting gap is real. A lot of teams can fine-tune a model. Very few can walk into a mid-market manufacturer, map the quality workflow, wire the autonomy into their stack, and hand it off in 90 days.
 
