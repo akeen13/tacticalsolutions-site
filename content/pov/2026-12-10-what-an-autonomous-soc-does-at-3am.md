@@ -7,7 +7,7 @@ proofArm: "prosentinel"
 summary: "The part every autonomous-SOC pitch skips: the ninety seconds after an alert fires. Walked minute by minute, with the exact six-line message the on-call gets."
 cta:
   label: "Three design-partner slots open this quarter. Apply through the intake"
-  href: "https://akeen13.github.io/tacticalsolutions-site/prosentinel/?utm_source=pov&utm_medium=web&utm_campaign=pov-2026-12-10-autonomous-soc&utm_content=cta"
+  href: "/prosentinel?utm_source=pov&utm_medium=web&utm_campaign=pov-2026-12-10-autonomous-soc&utm_content=cta"
 draft: false
 ---
 
